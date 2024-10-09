@@ -3,6 +3,11 @@
   padding-right: 5rem;
 }
 
+.bg-green-block {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 254 248 / var(--tw-bg-opacity));
+}
+
 header {
   position: fixed;
   top: 0;
@@ -13,12 +18,37 @@ header {
   justify-content: space-between;
   z-index: 100;
   align-items: center;
-  background-color: F0EFFF;
+  background-color: #047640;
 }
 
 header nav a {
   justify-content: space-between;
   margin: 1rem;
+}
+
+header .icons {
+  position: absolute;
+  top: 50%; /* Sesuaikan agar ikon menu berada di tengah vertikal */
+  right: 2rem; /* Tempatkan di pojok kanan */
+  transform: translateY(-50%); /* Pusatkan vertikal ikon */
+}
+
+header .icons i {
+  cursor: pointer;
+  line-height: 4.5rem;
+  height: 4.5rem;
+  width: 4.5rem;
+  text-align: center;
+  font-size: 1.7rem;
+  color: #fff;
+  border-radius: 50%;
+}
+
+header .icons i:hover,
+header .icons a:hover {
+  transform: rotate(360deg);
+  color: white;
+  background: #047640;
 }
 
 header .icons #menu-bars {
@@ -33,10 +63,10 @@ header .icons #menu-bars {
   min-height: 100vh;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
   background-size: cover;
   background-position: center; /* Avoid using !important if possible */
-  padding: 2rem 9%;
+  padding: 4rem 9%;
 }
 
 /* Card hover effect */
@@ -58,35 +88,53 @@ header .icons #menu-bars {
 }
 
 @media (max-width: 991px) {
+  .home .box .open h1 {
+    font-size: 3rem;
+    line-height: 1;
+  }
   header {
     padding: 1rem 2rem;
+    justify-content: space-between;
   }
 
   header .icons #menu-bars {
     display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
   }
 
-  header nav {
+  header .contactt #contact {
+    display: none;
+  }
+
+  header .navbar {
+    width: 100%; /* Ubah lebar menjadi lebih proporsional */
     position: absolute;
-    top: 50px;
-    left: 0;
-    right: 0;
-    background: var(--black);
-    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+    top: 100%; /* Perbaiki posisi agar navbar muncul tepat di bawah header */
+    left: 0; /* Menambahkan sedikit margin dari kiri agar lebih rapi */
+    right: 0; /* Menambahkan sedikit margin dari kanan */
+    background-color: #047640;
+    border-radius: 0 0 20px 20px; /* Tambahkan border-radius agar lebih modern */
     padding: 1rem;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.5s ease; /* Tambahkan transisi untuk animasi yang lebih halus */
   }
 
-  header nav.active {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  header nav a {
+  header .navbar a {
     display: block;
-    padding: 1.5rem;
-    margin: 1rem;
-    font-size: 2rem;
-    background: var(--red);
+    padding: 0.75rem;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: right;
+  }
+
+  header .icons #menu-bars.active {
+    transform: rotate(90deg); /* Rotasi ketika navbar aktif */
   }
 }
 
@@ -114,13 +162,47 @@ header .icons #menu-bars {
     flex-wrap: wrap;
     flex-direction: column;
   }
+
   .profil-content .flex {
     flex-direction: column;
     gap: 0; /* Adjust gap as per your need */
   }
+
   .profil-content .this {
     width: 100%;
     padding-left: 0; /* Remove padding to align content properly */
     padding-right: 0;
+  }
+
+  footer .container {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 0 10px; /* Add padding to ensure content fits within the screen */
+  }
+
+  footer {
+    background-color: #05894a;
+    color: #fff;
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+
+  footer h4 {
+    margin-bottom: 10px;
+    font-size: 16px; /* Adjust heading size */
+  }
+
+  footer p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 1.4; /* Ensure readability by adjusting line height */
+  }
+
+  .footer-social a {
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+
+  .footer-social a:hover {
+    color: #ddd;
   }
 }
